@@ -1,0 +1,11 @@
+:root {
+  --color-primary: #363b44;
+  --color-secondary: #ffffff;
+  --color-accent: #1b2325;
+}
+
+[data-theme="light"] {
+  --color-primary: #ffffff;
+  --color-secondary: #363b44;
+  --color-accent: #59a1a5;
+}
