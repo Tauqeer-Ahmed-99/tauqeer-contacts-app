@@ -1,12 +1,14 @@
 import React from "react";
 
-const Button = ({ children, handleTheme, h, w }) => {
+const Button = ({ children, handleOnClick, conditionalClasses }) => {
   const defaultClasses =
-    " m-3 border rounded-md bg-secondary text-primary font-medium grid place-items-center self-center ";
-  const classes = h || w ? defaultClasses + h + " " + w : defaultClasses;
+    "m-3 border rounded-md bg-secondary text-primary font-medium grid place-items-center self-center ";
+  const classes = conditionalClasses
+    ? defaultClasses + conditionalClasses
+    : defaultClasses;
 
   return (
-    <button className={classes} onClick={handleTheme}>
+    <button className={classes} onClick={handleOnClick}>
       {children}
     </button>
   );
