@@ -2,7 +2,7 @@ import React from "react";
 import ContactsList from "../components/contact/ContactsList";
 import Header from "../components/header/Header";
 
-const Home = ({ onThemeHandle, onHomePage, setIsLoggedIn }) => {
+const Home = ({ onThemeHandle, onHomePage, setIsLoggedIn, theme }) => {
   return (
     <>
       <Header
@@ -10,6 +10,7 @@ const Home = ({ onThemeHandle, onHomePage, setIsLoggedIn }) => {
         userName="Tauqeer Khan"
         onHomePage={onHomePage}
         setIsLoggedIn={setIsLoggedIn}
+        theme={theme}
       />
       <ContactsList />
     </>

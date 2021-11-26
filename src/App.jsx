@@ -36,6 +36,7 @@ const App = () => {
               onThemeHandle={handleTheme}
               onLoginPage={isLoggedIn}
               setIsLoggedIn={settingIsLoggedIn}
+              theme={theme}
             />
             <Redirect to={isLoggedIn ? "/home" : "/login"}></Redirect>
           </Route>
@@ -44,6 +45,7 @@ const App = () => {
               onThemeHandle={handleTheme}
               onHomePage={isLoggedIn}
               setIsLoggedIn={settingIsLoggedIn}
+              theme={theme}
             />
             <Redirect to={isLoggedIn ? "/home" : "/login"}></Redirect>
           </Route>

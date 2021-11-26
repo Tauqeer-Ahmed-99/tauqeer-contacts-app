@@ -3,10 +3,14 @@ import Header from "../components/header/Header";
 import contactLogo from "../assets/contacts.png";
 import Button from "../components/button/Button";
 
-const Login = ({ onThemeHandle, setIsLoggedIn }) => {
+const Login = ({ onThemeHandle, setIsLoggedIn, theme }) => {
   return (
     <>
-      <Header onThemeHandle={onThemeHandle} setIsLoggedIn={setIsLoggedIn} />
+      <Header
+        onThemeHandle={onThemeHandle}
+        setIsLoggedIn={setIsLoggedIn}
+        theme={theme}
+      />
       <main className="flex flex-col items-center justify-between max-w-screen-lg mx-auto my-14 lg:flex-row lg:text-">
         <img
           className="h-20 px-8 mx-8 md:h-52"

@@ -1,6 +1,7 @@
 import React from "react";
 
-import { MdOutlineDarkMode } from "react-icons/md";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { BiLogOut, BiPlus } from "react-icons/bi";
 
 import Button from "../button/Button";
 
@@ -9,6 +10,7 @@ export const Header = ({
   userName,
   onHomePage,
   setIsLoggedIn,
+  theme,
 }) => {
   const welcomeHeading = userName
     ? "Welcome " + userName
@@ -27,11 +29,17 @@ export const Header = ({
     </Button>
   ) : (
     <>
-      <Button conditionalClasses="w-28 h-8" handleOnClick={() => {}}>
-        Add Contact
+      <Button
+        conditionalClasses="w-20 h-10 grid-cols-2"
+        handleOnClick={() => {}}
+      >
+        <span className="ml-4"> Add </span>
+        <span>
+          <BiPlus />
+        </span>
       </Button>
-      <Button conditionalClasses="w-20 h-8" handleOnClick={handleOnClick}>
-        Sign Out
+      <Button conditionalClasses="w-10 h-10 " handleOnClick={handleOnClick}>
+        <BiLogOut />
       </Button>
     </>
   );
@@ -41,8 +49,8 @@ export const Header = ({
         <h1 className="text-xl font-bold sm:text-2xl">{welcomeHeading}</h1>
         <nav className="flex">
           {buttonComponent}
-          <Button conditionalClasses="w-8 h-8" handleOnClick={onThemeHandle}>
-            <MdOutlineDarkMode />
+          <Button conditionalClasses="w-10 h-10" handleOnClick={onThemeHandle}>
+            {theme !== "dark" ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}
           </Button>
         </nav>
       </div>
