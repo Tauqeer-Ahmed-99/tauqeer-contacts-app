@@ -1,10 +1,7 @@
 import React, { useMemo } from "react";
+import { randomNumberGenerator } from "./randomNumberGenerator";
 
 const Contact = ({ name, number, email, city, status }) => {
-  const randomNumberGenerator = () => {
-    return Math.floor(Math.random() * 100000 + 1);
-  };
-
   const imageUrl = useMemo(
     () =>
       `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`,
@@ -16,11 +13,11 @@ const Contact = ({ name, number, email, city, status }) => {
       <div className="flex flex-col">
         <div className="p-4 shadow-md bg-accent rounded-3xl">
           <div className="flex-none ">
-            <div className="w-full h-full mb-3  lg:h-32 lg:w-32 lg:mx-auto lg:pt-3 lg:mb-0">
+            <div className="w-full h-full mb-3 lg:h-32 lg:w-32 lg:mx-auto lg:pt-3 lg:mb-0">
               <img
                 src={imageUrl}
                 alt="Just a flower"
-                className="object-scale-down w-full  lg:object-cover lg:h-32 lg:w-32 rounded-2xl lg:rounded-t-full lg:rounded-b-full"
+                className="object-scale-down w-full lg:object-cover lg:h-32 lg:w-32 rounded-2xl lg:rounded-t-full lg:rounded-b-full"
               />
             </div>
             <div className="flex-auto py-2 m-3 justify-evenly">
@@ -115,7 +112,7 @@ const Contact = ({ name, number, email, city, status }) => {
               <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
               <div className="flex space-x-3 text-sm font-medium">
                 <div className="flex flex-auto space-x-3">
-                  <button className="inline-flex items-center px-2 py-2 mb-2 space-x-2 tracking-wider text-white bg-red-700 rounded-full shadow-sm  md:mb-0 hover:bg-red-900">
+                  <button className="inline-flex items-center px-2 py-2 mb-2 space-x-2 tracking-wider text-white bg-red-700 rounded-full shadow-sm md:mb-0 hover:bg-red-900">
                     Delete
                   </button>
                 </div>
