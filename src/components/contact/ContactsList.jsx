@@ -1,11 +1,11 @@
 import React from "react";
 import Contact from "./Contact";
 
-const ContactsList = () => {
+const ContactsList = ({ toggleFormModal }) => {
   return (
     <div className="box-border h-auto py-8 mt-24 bg-primary">
       <div className="md:max-w-xl md:mx-auto lg:max-w-4xl">
-        <div className="grid max-w-screen-lg grid-cols-1 gap-6 m-4 md:mx-auto md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid max-w-screen-lg grid-cols-1 gap-6 m-4 md:mx-auto sm:grid-cols-2 lg:grid-cols-3">
           {[...new Array(20)].map(() => (
             <Contact
               name={"Tauqeer"}
@@ -15,6 +15,7 @@ const ContactsList = () => {
               city={"Kalyan"}
               status={"Active"}
               key={Math.random()}
+              toggleFormModal={toggleFormModal}
             />
           ))}
         </div>

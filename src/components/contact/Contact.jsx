@@ -1,31 +1,27 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { randomNumberGenerator } from "./randomNumberGenerator";
 
-const Contact = ({ name, number, email, city, status }) => {
-  const imageUrl = useMemo(
-    () =>
-      `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`,
-    []
-  );
+const Contact = ({ name, number, email, city, status, toggleFormModal }) => {
+  const imageUrl = `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`;
 
   return (
     <>
       <div className="flex flex-col">
         <div className="p-4 shadow-md bg-accent rounded-3xl">
           <div className="flex-none ">
-            <div className="w-full h-full mb-3 lg:h-32 lg:w-32 lg:mx-auto lg:pt-3 lg:mb-0">
+            <div className="w-full h-full mb-3 text-center lg:h-32 lg:w-32 lg:mx-auto lg:pt-3 lg:mb-0">
               <img
                 src={imageUrl}
-                alt="Just a flower"
-                className="object-scale-down w-full lg:object-cover lg:h-32 lg:w-32 rounded-2xl lg:rounded-t-full lg:rounded-b-full"
+                alt="Avatar"
+                className="object-scale-down w-32 h-32 mx-auto lg:object-cover lg:h-32 lg:w-32 rounded-2xl lg:rounded-t-full lg:rounded-b-full"
               />
             </div>
             <div className="flex-auto py-2 m-3 justify-evenly">
               <div className="flex flex-wrap ">
-                <div className="flex-none w-full text-xs font-medium text-blue-700 lg:text-center">
+                <div className="flex-none w-full text-xs font-medium text-center text-blue-700 lg:text-center">
                   {status}
                 </div>
-                <h2 className="flex-auto text-lg font-medium text-secondary lg:text-center">
+                <h2 className="flex-auto text-lg font-medium text-center text-secondary lg:text-center">
                   {name}
                 </h2>
               </div>
@@ -37,7 +33,7 @@ const Contact = ({ name, number, email, city, status }) => {
                     className="w-5 h-5 mr-2 fill-current text-secondary"
                     version="1.1"
                     viewBox="0 0 349.661 349.661"
-                    enable-background="new 0 0 349.661 349.661"
+                    enableBackground="new 0 0 349.661 349.661"
                   >
                     <g>
                       <path d="M174.831,0C102.056,0,42.849,59.207,42.849,131.981c0,30.083,21.156,74.658,62.881,132.485   c30.46,42.215,61.363,76.607,61.671,76.95l7.429,8.245l7.429-8.245c0.309-0.342,31.211-34.734,61.671-76.95   c41.725-57.828,62.881-102.402,62.881-132.485C306.812,59.207,247.605,0,174.831,0z M174.83,319.617   c-37.058-42.692-111.98-139.048-111.98-187.636C62.849,70.235,113.084,20,174.831,20s111.981,50.235,111.981,111.981   C286.812,180.54,211.888,276.915,174.83,319.617z" />
@@ -120,6 +116,7 @@ const Contact = ({ name, number, email, city, status }) => {
                   className="px-5 py-2 mb-2 tracking-wider rounded-full shadow-sm md:mb-0 bg-secondary text-primary hover:bg-gray-400"
                   type="button"
                   aria-label="like"
+                  onClick={toggleFormModal}
                 >
                   Edit
                 </button>
