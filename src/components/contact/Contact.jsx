@@ -1,33 +1,43 @@
-import React from "react";
+import React, { useMemo } from "react";
 
-const Contact = ({ name, number, email, imgUrl, city, status }) => {
+const Contact = ({ name, number, email, city, status }) => {
+  const randomNumberGenerator = () => {
+    return Math.floor(Math.random() * 100000 + 1);
+  };
+
+  const imageUrl = useMemo(
+    () =>
+      `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`,
+    []
+  );
+
   return (
     <>
-      <div class="flex flex-col">
-        <div class="bg-accent shadow-md  rounded-3xl p-4">
-          <div class="flex-none ">
-            <div class=" h-full w-full lg:h-32 lg:w-32 lg:mx-auto lg:pt-3 lg:mb-0 mb-3">
+      <div className="flex flex-col">
+        <div className="p-4 shadow-md bg-accent rounded-3xl">
+          <div className="flex-none ">
+            <div className="w-full h-full mb-3  lg:h-32 lg:w-32 lg:mx-auto lg:pt-3 lg:mb-0">
               <img
-                src={imgUrl}
+                src={imageUrl}
                 alt="Just a flower"
-                class=" w-full  object-scale-down lg:object-cover  lg:h-32 lg:w-32 rounded-2xl lg:rounded-t-full lg:rounded-b-full"
+                className="object-scale-down w-full  lg:object-cover lg:h-32 lg:w-32 rounded-2xl lg:rounded-t-full lg:rounded-b-full"
               />
             </div>
-            <div class="flex-auto m-3 justify-evenly py-2">
-              <div class="flex flex-wrap ">
-                <div class="w-full flex-none text-xs text-blue-700 font-medium lg:text-center">
+            <div className="flex-auto py-2 m-3 justify-evenly">
+              <div className="flex flex-wrap ">
+                <div className="flex-none w-full text-xs font-medium text-blue-700 lg:text-center">
                   {status}
                 </div>
-                <h2 class="flex-auto text-lg font-medium text-secondary lg:text-center">
+                <h2 className="flex-auto text-lg font-medium text-secondary lg:text-center">
                   {name}
                 </h2>
               </div>
-              <p class="mt-3"></p>
-              <div class="flex py-4 flex-wrap text-sm text-secondary-500">
-                <div class="flex-1 inline-flex items-center">
+              <p className="mt-3"></p>
+              <div className="flex flex-wrap py-4 text-sm text-secondary-500">
+                <div className="inline-flex items-center flex-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 mr-2 fill-current text-secondary"
+                    className="w-5 h-5 mr-2 fill-current text-secondary"
                     version="1.1"
                     viewBox="0 0 349.661 349.661"
                     enable-background="new 0 0 349.661 349.661"
@@ -37,12 +47,12 @@ const Contact = ({ name, number, email, imgUrl, city, status }) => {
                       <circle cx="174.831" cy="131.982" r="49.696" />
                     </g>
                   </svg>
-                  <p class="">{city}</p>
+                  <p className="">{city}</p>
                 </div>
-                <div class="flex-1 inline-flex items-center">
+                <div className="inline-flex items-center flex-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 mr-2 fill-current text-secondary my-2"
+                    className="w-5 h-5 my-2 mr-2 fill-current text-secondary"
                     version="1.1"
                     id="Capa_1"
                     x="0px"
@@ -66,12 +76,12 @@ const Contact = ({ name, number, email, imgUrl, city, status }) => {
                     <g></g>
                     <g></g>
                   </svg>
-                  <p class="">{number}</p>
+                  <p className="">{number}</p>
                 </div>
-                <div class="flex-1 inline-flex items-center">
+                <div className="inline-flex items-center flex-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 mr-2 fill-current text-secondary"
+                    className="w-5 h-5 mr-2 fill-current text-secondary"
                     version="1.1"
                     id="Layer_1"
                     x="0px"
@@ -99,18 +109,18 @@ const Contact = ({ name, number, email, imgUrl, city, status }) => {
                     <g></g>
                     <g></g>
                   </svg>
-                  <p class="">{email}</p>
+                  <p className="">{email}</p>
                 </div>
               </div>
-              <div class="flex p-4 pb-2 border-t border-gray-200 "></div>
-              <div class="flex space-x-3 text-sm font-medium">
-                <div class="flex-auto flex space-x-3">
-                  <button class=" mb-2 md:mb-0 bg-red-700 px-2 py-2 shadow-sm tracking-wider text-white rounded-full hover:bg-red-900 inline-flex items-center space-x-2 ">
+              <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
+              <div className="flex space-x-3 text-sm font-medium">
+                <div className="flex flex-auto space-x-3">
+                  <button className="inline-flex items-center px-2 py-2 mb-2 space-x-2 tracking-wider text-white bg-red-700 rounded-full shadow-sm  md:mb-0 hover:bg-red-900">
                     Delete
                   </button>
                 </div>
                 <button
-                  class="mb-2 md:mb-0 bg-secondary px-5 py-2 shadow-sm tracking-wider text-primary rounded-full hover:bg-gray-400"
+                  className="px-5 py-2 mb-2 tracking-wider rounded-full shadow-sm md:mb-0 bg-secondary text-primary hover:bg-gray-400"
                   type="button"
                   aria-label="like"
                 >
