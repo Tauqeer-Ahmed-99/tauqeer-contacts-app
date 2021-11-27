@@ -5,19 +5,31 @@ import { BiLogOut, BiPlus } from "react-icons/bi";
 
 import Button from "../button/Button";
 
+import { logout } from "../../actions/auth.action";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 export const Header = ({
   onThemeHandle,
-  userName,
   onHomePage,
-  setIsLoggedIn,
   theme,
   toggleFormModal,
+  loginHandler,
+  setIsLoggedIn,
 }) => {
+  const userName = useSelector((state) => state.auth.userName);
   const welcomeHeading = userName
     ? "Welcome " + userName
     : "Welcome to Contacts App";
 
   const handleOnClick = () => {
+    loginHandler();
+  };
+
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
     setIsLoggedIn();
   };
 
@@ -41,7 +53,7 @@ export const Header = ({
           <BiPlus />
         </span>
       </Button>
-      <Button conditionalClasses="m-3 w-10 h-10 " handleOnClick={handleOnClick}>
+      <Button conditionalClasses="m-3 w-10 h-10 " handleOnClick={logoutHandler}>
         <BiLogOut />
       </Button>
     </>

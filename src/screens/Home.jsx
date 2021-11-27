@@ -21,7 +21,7 @@ const Home = ({ onThemeHandle, onHomePage, setIsLoggedIn, theme }) => {
         theme={theme}
         toggleFormModal={toggleFormModal}
       />
-      <ContactsList />
+      <ContactsList toggleFormModal={toggleFormModal} />
     </>
   );
 };
