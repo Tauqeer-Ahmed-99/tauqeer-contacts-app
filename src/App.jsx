@@ -47,6 +47,7 @@ const App = () => {
               setIsLoggedIn={settingIsLoggedIn}
               theme={theme}
             />
+
             <Redirect to={isLoggedIn ? "/home" : "/login"}></Redirect>
           </Route>
         </Switch>

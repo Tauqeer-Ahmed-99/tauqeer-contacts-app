@@ -11,7 +11,7 @@ const Login = ({ onThemeHandle, setIsLoggedIn, theme }) => {
         setIsLoggedIn={setIsLoggedIn}
         theme={theme}
       />
-      <main className="flex flex-col items-center justify-between max-w-screen-lg mx-auto my-14 lg:flex-row lg:text-">
+      <main className="flex flex-col items-center justify-between max-w-screen-lg pt-40 mx-auto mt-22 lg:flex-row">
         <img
           className="h-20 px-8 mx-8 md:h-52"
           src={contactLogo}
