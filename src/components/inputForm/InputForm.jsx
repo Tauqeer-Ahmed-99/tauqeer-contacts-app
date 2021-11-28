@@ -1,9 +1,20 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { postContact } from "../../actions/contactsList.action.js";
+
 import validation from "./validation";
+import { randomNumberGenerator } from "../contact/randomNumberGenerator.js";
 
 const InputForm = ({ className, isFormModalOpen, toggleFormModal }) => {
+  const { id } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const Image = `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`;
+
   const defaultClass =
     "m-0 p-0 box-border w-screen h-screen bg-primary fixed top-0 left-0 z-8 fixed";
   const classes = className ? className + " " + defaultClass : defaultClass;
@@ -11,17 +22,24 @@ const InputForm = ({ className, isFormModalOpen, toggleFormModal }) => {
   return (
     <Form
       onSubmit={(values, formAPI) => {
-        console.log(values);
         formAPI.reset();
         formAPI.restart();
         if (values) {
           toggleFormModal(isFormModalOpen ? false : true);
         }
+
+        dispatch(
+          postContact(id, {
+            ...values,
+            imgUrl: Image,
+            contactId: Math.random(),
+          })
+        );
       }}
       validate={validation}
       initialValues={{
         name: "",
-        phone: "",
+        number: "",
         email: "",
         city: "",
         status: "inactive",
@@ -74,7 +92,7 @@ const InputForm = ({ className, isFormModalOpen, toggleFormModal }) => {
                       Phone Number
                     </label>
                     <Field
-                      name="phone"
+                      name="number"
                       type="number"
                       render={({ input, meta }) => (
                         <div>

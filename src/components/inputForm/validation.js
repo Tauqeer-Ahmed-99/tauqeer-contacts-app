@@ -4,7 +4,7 @@ import { setIn } from "final-form";
 const validationSchema = yup.object({
   name: yup.string().required("Name Required!"),
   email: yup.string().email("Email is invalid!").required("Email Required!"),
-  phone: yup
+  number: yup
     .string()
     .max(10, "Must have 10 digits!")
     .required("Phone no. Required!"),

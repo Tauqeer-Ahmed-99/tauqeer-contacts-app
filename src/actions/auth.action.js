@@ -14,16 +14,12 @@ export const login = () => async (disptach) => {
 
     const signInResponse = await auth.signInWithPopup(provider);
 
-    console.log(signInResponse);
-
     const profile = {
       email: signInResponse.additionalUserInfo.profile.email,
       userName: signInResponse.additionalUserInfo.profile.name,
       accessToken: signInResponse.credential.accessToken,
       id: signInResponse.additionalUserInfo.profile.id,
     };
-
-    console.log(profile.id);
 
     sessionStorage.setItem("profile", JSON.stringify(profile));
 

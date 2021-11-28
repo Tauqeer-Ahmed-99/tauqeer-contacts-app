@@ -2,3 +2,9 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOG_OUT = "LOG_OUT";
+
+export const REQUEST_CONTACTS = "REQUEST_CONTACTS";
+export const GOT_CONTACTS = "GOT_CONTACTS";
+export const DIDNOT_GET_CONTACTS = "DIDNOT_GET_CONTACTS";
+export const POST_CONTACTS = "POST_CONTACTS";
+export const DELETE_CONTACTS = "DELETE_CONTACTS";

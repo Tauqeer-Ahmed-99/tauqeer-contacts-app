@@ -1,12 +1,37 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteContact,
+  getContactsList,
+} from "../../actions/contactsList.action";
 import { randomNumberGenerator } from "./randomNumberGenerator";
 
-const Contact = ({ name, number, email, city, status, toggleFormModal }) => {
-  const imageUrl = `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`;
+const Contact = ({
+  name,
+  number,
+  email,
+  city,
+  status,
+  toggleFormModal,
+  imgUrl,
+  id,
+}) => {
+  const { id: userId } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const handleOnDelete = async () => {
+    await dispatch(deleteContact(userId, id));
+    dispatch(getContactsList(userId));
+  };
+
+  const imageUrl = imgUrl
+    ? imgUrl
+    : `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`;
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col mt-8">
         <div className="p-4 shadow-md bg-accent rounded-3xl">
           <div className="flex-none ">
             <div className="w-full h-full mb-3 text-center lg:h-32 lg:w-32 lg:mx-auto lg:pt-3 lg:mb-0">
@@ -18,7 +43,13 @@ const Contact = ({ name, number, email, city, status, toggleFormModal }) => {
             </div>
             <div className="flex-auto py-2 m-3 justify-evenly">
               <div className="flex flex-wrap ">
-                <div className="flex-none w-full text-xs font-medium text-center text-blue-700 lg:text-center">
+                <div
+                  className={
+                    status === "active"
+                      ? "flex-none w-full text-xs font-medium text-center text-blue-700 lg:text-center uppercase"
+                      : "flex-none w-full text-xs font-medium text-center text-red-700 lg:text-center uppercase"
+                  }
+                >
                   {status}
                 </div>
                 <h2 className="flex-auto text-lg font-medium text-center text-secondary lg:text-center">
@@ -108,7 +139,10 @@ const Contact = ({ name, number, email, city, status, toggleFormModal }) => {
               <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
               <div className="flex space-x-3 text-sm font-medium">
                 <div className="flex flex-auto space-x-3">
-                  <button className="inline-flex items-center px-2 py-2 mb-2 space-x-2 tracking-wider text-white bg-red-700 rounded-full shadow-sm md:mb-0 hover:bg-red-900">
+                  <button
+                    className="inline-flex items-center px-2 py-2 mb-2 space-x-2 tracking-wider text-white bg-red-700 rounded-full shadow-sm md:mb-0 hover:bg-red-900"
+                    onClick={handleOnDelete}
+                  >
                     Delete
                   </button>
                 </div>
@@ -117,6 +151,7 @@ const Contact = ({ name, number, email, city, status, toggleFormModal }) => {
                   type="button"
                   aria-label="like"
                   onClick={toggleFormModal}
+                  disabled
                 >
                   Edit
                 </button>

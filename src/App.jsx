@@ -18,9 +18,6 @@ const App = () => {
   };
 
   const accessToken = useSelector((state) => state.auth.accessToken);
-  console.log(accessToken);
-
-  console.log(history);
 
   useEffect(() => {
     if (!accessToken) {
@@ -29,7 +26,6 @@ const App = () => {
   }, [accessToken, history]);
 
   const handleTheme = (event) => {
-    event.preventDefault();
     setTheme(theme === "dark" ? "light" : "dark");
   };
   return (
@@ -38,17 +34,13 @@ const App = () => {
       data-theme={theme}
     >
       <Switch>
-        <Route path="/" exact>
-          <Redirect to="/login"></Redirect>
-        </Route>
-        <Route path="/login">
+        <Route path="/login" exact>
           <Login
             onThemeHandle={handleTheme}
             onLoginPage={isLoggedIn}
             setIsLoggedIn={settingIsLoggedIn}
             theme={theme}
           />
-          <Redirect to={isLoggedIn ? "/home" : "/login"}></Redirect>
         </Route>
         <Route path="/home">
           <Home
@@ -57,9 +49,8 @@ const App = () => {
             setIsLoggedIn={settingIsLoggedIn}
             theme={theme}
           />
-
-          <Redirect to={isLoggedIn ? "/home" : "/login"}></Redirect>
         </Route>
+        <Redirect to="/login" />
       </Switch>
     </div>
   );

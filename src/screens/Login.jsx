@@ -8,7 +8,7 @@ import { login } from "../actions/auth.action";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const Login = ({ onThemeHandle, setIsLoggedIn, theme }) => {
+const Login = ({ onThemeHandle, setIsLoggedIn, theme, onLoginPage }) => {
   const dispatch = useDispatch();
 
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -22,9 +22,9 @@ const Login = ({ onThemeHandle, setIsLoggedIn, theme }) => {
   useEffect(() => {
     if (accessToken) {
       history.push("/home");
-      setIsLoggedIn();
+      setIsLoggedIn(!onLoginPage ? true : false);
     }
-  }, [accessToken, history, setIsLoggedIn]);
+  }, [accessToken, history, setIsLoggedIn, onLoginPage]);
 
   return (
     <>
@@ -33,6 +33,7 @@ const Login = ({ onThemeHandle, setIsLoggedIn, theme }) => {
         setIsLoggedIn={setIsLoggedIn}
         loginHandler={loginHandler}
         theme={theme}
+        onLoginPage={onLoginPage}
       />
       <main className="flex flex-col items-center justify-between max-w-screen-lg pt-40 mx-auto mt-22 lg:flex-row">
         <img
