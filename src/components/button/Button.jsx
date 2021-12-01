@@ -8,7 +8,12 @@ const Button = ({ children, handleOnClick, conditionalClasses }) => {
     : defaultClasses;
 
   return (
-    <button className={classes} onClick={handleOnClick}>
+    <button
+      className={classes}
+      onClick={() => {
+        handleOnClick();
+      }}
+    >
       {children}
     </button>
   );
