@@ -17,6 +17,7 @@ export const Header = ({
   loginHandler,
   setIsLoggedIn,
   onLogInPage,
+  setAddClicked,
 }) => {
   const userName = useSelector((state) => state.auth.userName);
   const welcomeHeading = userName
@@ -48,6 +49,7 @@ export const Header = ({
           conditionalClasses="m-3 w-20 h-10 grid-cols-2"
           handleOnClick={() => {
             toggleFormModal(true);
+            setAddClicked(true);
           }}
         >
           <span className="ml-4"> Add </span>

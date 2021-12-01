@@ -6,6 +6,7 @@ const validationSchema = yup.object({
   email: yup.string().email("Email is invalid!").required("Email Required!"),
   number: yup
     .string()
+    .min(10, "Must have 10 digits!")
     .max(10, "Must have 10 digits!")
     .required("Phone no. Required!"),
   city: yup.string().required("City Name Required!"),

@@ -15,6 +15,8 @@ const Contact = ({
   toggleFormModal,
   imgUrl,
   id,
+  getContactIdFromContact,
+  isFormModalOpen,
 }) => {
   const { id: userId } = useSelector((state) => state.auth);
 
@@ -23,6 +25,11 @@ const Contact = ({
   const handleOnDelete = async () => {
     await dispatch(deleteContact(userId, id));
     dispatch(getContactsList(userId));
+  };
+
+  const handleOnEdit = () => {
+    getContactIdFromContact(id);
+    toggleFormModal(isFormModalOpen ? false : true);
   };
 
   const imageUrl = imgUrl
@@ -73,7 +80,7 @@ const Contact = ({
                   </svg>
                   <p className="">{city}</p>
                 </div>
-                <div className="inline-flex items-center flex-1">
+                <div className="inline-flex items-center flex-1 mr-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-5 h-5 my-2 mr-2 fill-current text-secondary"
@@ -150,8 +157,7 @@ const Contact = ({
                   className="px-5 py-2 mb-2 tracking-wider rounded-full shadow-sm md:mb-0 bg-secondary text-primary hover:bg-gray-400"
                   type="button"
                   aria-label="like"
-                  onClick={toggleFormModal}
-                  disabled
+                  onClick={handleOnEdit}
                 >
                   Edit
                 </button>

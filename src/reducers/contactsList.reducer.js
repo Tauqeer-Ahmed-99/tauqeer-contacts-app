@@ -26,13 +26,30 @@ export const getContactsListReducer = (prevState = initialState, action) => {
         ...prevState,
         loading: false,
       };
-    case actionTypes.POST_CONTACTS:
+    case actionTypes.POST_CONTACTS_SUCCESS:
       return {
         ...prevState,
         data: payload,
         loading: false,
       };
-    case actionTypes.DELETE_CONTACTS:
+
+    case actionTypes.EDIT_CONTACT_REQUEST:
+      return {
+        ...prevState,
+        loading: true,
+      };
+    case actionTypes.EDIT_CONTACT_SUCCESS:
+      return {
+        ...prevState,
+        loading: false,
+      };
+    case actionTypes.EDIT_CONTACT_FAIL:
+      return {
+        ...prevState,
+        loading: false,
+      };
+
+    case actionTypes.DELETE_CONTACTS_SUCCESS:
       return {
         ...prevState,
         data: payload,
