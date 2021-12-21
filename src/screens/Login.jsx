@@ -35,14 +35,14 @@ const Login = ({ onThemeHandle, setIsLoggedIn, theme, onLoginPage }) => {
         theme={theme}
         onLoginPage={onLoginPage}
       />
-      <main className="flex flex-col items-center justify-between max-w-screen-lg pt-40 mx-auto mt-22 lg:flex-row">
+      <main className="flex flex-col items-center justify-between max-w-screen-lg mx-auto mt-22 lg:flex-row">
         <img
           className="h-20 px-8 mx-8 md:h-52"
           src={contactLogo}
           alt="Contact Logo"
         />
         <div className="flex flex-col">
-          <p className="p-2 mx-8 text-lg font-medium text-center md:text-2xl md:my-8 md:p-6 lg:text-xl lg:my-0">
+          <p className="p-2 mx-8 my-8 text-lg font-medium text-center md:text-2xl md:my-8 md:p-6 lg:text-xl lg:my-0">
             Welcome to Contact App!
             <br />
             Our contact app allows you to store your contacts.

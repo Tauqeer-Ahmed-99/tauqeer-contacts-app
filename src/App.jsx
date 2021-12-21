@@ -11,6 +11,12 @@ const App = () => {
   const [theme, setTheme] = useState("dark");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    localStorage.getItem("theme") === "dark"
+      ? setTheme("dark")
+      : setTheme("light");
+  }, []);
+
   const history = useHistory();
 
   const settingIsLoggedIn = () => {
@@ -28,9 +34,14 @@ const App = () => {
   const handleTheme = (event) => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
     <div
-      className="box-border h-screen p-0 m-0 bg-primary text-secondary"
+      className="box-border grid items-center h-screen p-0 m-0 bg-primary text-secondary"
       data-theme={theme}
     >
       <Switch>

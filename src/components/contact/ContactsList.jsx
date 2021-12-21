@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getContactsList } from "../../actions/contactsList.action";
 import Contact from "./Contact";
 
-const ContactsList = ({ toggleFormModal }) => {
+const ContactsList = ({
+  toggleFormModal,
+  getContactIdFromContact,
+  isFormModalOpen,
+}) => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.auth);
 
@@ -20,7 +24,7 @@ const ContactsList = ({ toggleFormModal }) => {
 
   let contactsList;
 
-  if (data === null) {
+  if (!data) {
     contactsList = (
       <h1 className="grid max-w-4xl col-span-3 p-20 mt-8 text-center uppercase border border-secondary mx-half text-secondary rounded-3xl">
         No Contacts Added!
@@ -33,13 +37,15 @@ const ContactsList = ({ toggleFormModal }) => {
           {...contact}
           key={contact.id}
           toggleFormModal={toggleFormModal}
+          getContactIdFromContact={getContactIdFromContact}
+          isFormModalOpen={isFormModalOpen}
         />
       );
     });
   }
 
   return (
-    <div className="box-border h-auto py-8 mt-24 bg-primary">
+    <div className="box-border h-auto py-36 bg-primary">
       <div className="md:max-w-xl md:mx-auto lg:max-w-4xl">
         <div className="grid max-w-screen-lg grid-cols-1 gap-6 m-4 md:mx-auto sm:grid-cols-2 lg:grid-cols-3">
           {contactsList}

@@ -6,6 +6,12 @@ import InputForm from "../components/inputForm/InputForm";
 
 const Home = ({ onThemeHandle, onHomePage, setIsLoggedIn, theme }) => {
   const [isFormModalOpen, toggleFormModal] = useState(false);
+  const [isAddClicked, setAddClicked] = useState(false);
+  const [contId, setContId] = useState("");
+
+  const getContactIdFromContact = (contactId) => {
+    setContId(contactId);
+  };
 
   return (
     <>
@@ -13,6 +19,9 @@ const Home = ({ onThemeHandle, onHomePage, setIsLoggedIn, theme }) => {
         className="opacity-50"
         isFormModalOpen={isFormModalOpen}
         toggleFormModal={toggleFormModal}
+        contId={contId}
+        isAddClicked={isAddClicked}
+        setAddClicked={setAddClicked}
       />
       <Header
         onThemeHandle={onThemeHandle}
@@ -21,8 +30,13 @@ const Home = ({ onThemeHandle, onHomePage, setIsLoggedIn, theme }) => {
         setIsLoggedIn={setIsLoggedIn}
         theme={theme}
         toggleFormModal={toggleFormModal}
+        setAddClicked={setAddClicked}
       />
-      <ContactsList toggleFormModal={toggleFormModal} />
+      <ContactsList
+        toggleFormModal={toggleFormModal}
+        getContactIdFromContact={getContactIdFromContact}
+        isFormModalOpen={isFormModalOpen}
+      />
     </>
   );
 };
